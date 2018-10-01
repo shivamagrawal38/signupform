@@ -1,0 +1,22 @@
+body{
+	margin: 0 auto;
+}
+.container-width{
+	width:550px;
+}
+.heading{
+	text-align:center;
+	color:blue
+}
+.red-color{
+	color:red;
+}
+.over-layer{
+	position: fixed;width: 100%;height: 100%; display:none; background: gray;opacity: .5;z-index: 100;left: 0;top: 0;
+}
+.confirmation-box {
+	height: auto;position:fixed;left: 37.5%;top: 15%;width: 23%;overflow:auto;border: 2px solid gray;border-radius: 7px;color: #333;font-size: 14px;z-index: 101;color: black;height: 85px;background: #FFF;text-align: center;
+}
+.close-btn{
+	display: block;text-align: center;margin: 20px auto 0 auto;color: #fff;background: #139659; font-size: 16px;
+}
