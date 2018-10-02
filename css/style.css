@@ -2,11 +2,10 @@ body{
 	margin: 0 auto;
 }
 .container-width{
-	width:550px;
+	width: 35%;
 }
 .heading{
-	text-align:center;
-	color:blue
+	text-align:center;	color:blue
 }
 .red-color{
 	color:red;
@@ -18,5 +17,5 @@ body{
 	height: auto;position:fixed;left: 37.5%;top: 15%;width: 23%;overflow:auto;border: 2px solid gray;border-radius: 7px;color: #333;font-size: 14px;z-index: 101;color: black;height: 85px;background: #FFF;text-align: center;
 }
 .close-btn{
-	display: block;text-align: center;margin: 20px auto 0 auto;color: #fff;background: #139659; font-size: 16px;
+	display: block; text-align: center; margin: 10px auto 0 auto; font-size: 16px; width: 78px;
 }
