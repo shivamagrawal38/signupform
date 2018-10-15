@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Login page</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="js/jquery.min.js"></script>
+		<script src="js/angular.min.js"></script>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/style.css">
+		<script src="https://storage.googleapis.com/karix-static/static/vendor/keratin-authn.min.js"></script>
+		<script src="js/common.js"></script>
+		<script src="js/loginctr.js"></script>
+	</head>
+	<body>
+		<div ng-app ="KarixApp" ng-controller ="LoginController" class="container container-width" >
+			<div class="heading" ng-if="!userLogin.isSuccess">
+				<h3><b>User Login Form</b></h3>
+			</div>
+			<div  ng-if="!userLogin.isSuccess">
+				<div align="right">
+				</div>
+				<form name="loginForm"  ng-submit="LoginUser()" novalidate>
+					<div class = "form-group">
+						<label for="email"> Email:  </label>
+						<input type="email" name="email" class="form-control" placeholder = "Enter Email" autocomplete="off" ng-model="userLogin.username" required />
+						<span class="red-color" ng-show="(loginForm.email.$dirty || loginForm.submitform) && loginForm.email.$invalid">
+							<span ng-show="loginForm.email.$error.required">Email is required.</span>
+							<span ng-show="loginForm.email.$error.email">Invalid email address.</span>
+						</span>
+					</div>
+					<div class="form-group">
+						<label for="password"> Password:  </label>
+						<input type="password" name="password" class="form-control" placeholder="Enter Password" ng-model="userLogin.password" required ng-minlength="6" />
+						<span class="red-color" ng-show="(loginForm.password.$dirty || userLogin.submitform) && loginForm.password.$invalid">
+							<span ng-show="loginForm.password.$error.required">Password is required.</span>
+							<span ng-show="loginForm.password.$error.minlength">Minimum length required is 6.</span>
+						</span>
+					</div>
+					
+					<input type="Submit"  class="btn btn-primary"  class="btn btn-primary" value="Submit">
+				</form>
+				
+			</div>
+			<div ng-if="userLogin.isSuccess || userLogin.isError" ng-style="{ display: userLogin.isSuccess == true  || userLogin.isError == true? 'block' : 'none' }" class="over-layer">
+				<div class="confirmation-box">
+					<div >
+						<label style="padding-top: 10px; margin-bottom: 0;">{{userLogin.errormsg}}</label>
+						<input ng-click="closebox()" class="btn close-btn btn-primary" value="Close">
+						<!-- <button  type="text" class="close-btn">Close</button> -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
