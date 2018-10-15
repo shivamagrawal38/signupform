@@ -1,4 +1,4 @@
-myApp.controller("RegistrationController", function($scope) {
+myApp.controller("RegistrationController", function($scope, $http) {
     $scope.userRegistration = {};
 
     function pad(s) {
@@ -34,15 +34,31 @@ myApp.controller("RegistrationController", function($scope) {
                 password: $scope.userRegistration.password
 
             }).then(function(success) {
-                $scope.userRegistration.isSuccess = true
-                $scope.userRegistration.errormsg = 'User Registered successfully.'
-                //console.log('success')
-
+                submitName()
             })
             .catch(function(errors) {
                 $scope.userRegistration.isError = true
                 $scope.userRegistration.errormsg = errors[0].field + ' ' + errors[0].message
                 $scope.$apply()
             })
+    }
+
+    function submitName() {
+        var req = httpServiceCall($http, 'POST', 'https://data.karix.co/user/register/', $.param({
+            name: $scope.userRegistration.username
+        }), $scope, 'application/x-www-form-urlencoded')
+        req.then(function(response) {
+            if (response && response.data && response.data.Message.toLowerCase() == "success") {
+                $scope.userRegistration.isSuccess = true
+                $scope.userRegistration.errormsg = 'User Registered successfully.'
+            }
+        }, function(error) {
+            if (error.status == 401)
+                $scope.userRegistration.isError = true
+            $scope.userRegistration.errormsg = error.data.message //errors[0].field + ' ' + errors[0].message
+            $scope.$apply()
+                //window.location = "login.html"
+                // console.log('getDashboardData')
+        });
     }
 });
