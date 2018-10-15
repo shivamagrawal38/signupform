@@ -4,11 +4,10 @@ function httpServiceCall($http, method, url, data, $scope, contentType) {
     if (method == 'POST') {
         var req = $http({
             method: method,
-            url:  url,
+            url: url,
             data: data,
             headers: {
                 'Content-Type': contentType,
-           
 
             }
         })
@@ -19,13 +18,13 @@ function httpServiceCall($http, method, url, data, $scope, contentType) {
             params: data,
             headers: {
                 'Content-Type': contentType,
-                'id_token': getCookie('id_token')
-                
+
             }
         })
     }
     return req
 };
+
 function getCookie(name) {
     var value = "; " + document.cookie;
     var parts = value.split("; " + name + "=");

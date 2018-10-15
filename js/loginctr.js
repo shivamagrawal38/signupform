@@ -23,7 +23,7 @@ myApp.controller("LoginController", ['$scope', '$http', function($scope, $http) 
                 /*$scope.userLogin.isSuccess = true
                 $scope.userLogin.errormsg = 'User loged in successfully.'*/
                 window.location = 'dashboard.html'
-                //console.log('sucess')
+                    //console.log('sucess')
 
             })
             .catch(function(errors) {
